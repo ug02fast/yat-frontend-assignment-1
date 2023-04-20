@@ -27,6 +27,16 @@ export type Pod = {
   name: string;
   description: string;
   tokens: PodToken[];
+  stats: {
+    tokens: number;
+    owners: number;
+    volume: {
+      daily: number;
+      weekly: number;
+      monthly: number;
+    };
+    floorPrice: { current: number };
+  };
 };
 
 export const pod = rest.get(
