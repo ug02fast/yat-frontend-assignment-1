@@ -1,7 +1,9 @@
-import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import Pod from './pages/Pod';
-import './App.css';
+import "./App.css";
+
+import { QueryClient, QueryClientProvider } from "react-query";
+
+import Pod from "./pages/Pod";
+import React from "react";
 
 const queryClient = new QueryClient();
 
