@@ -15,9 +15,8 @@ export type PodToken = {
     amount: number;
   };
   owner: {
-    address: string;
-    name: string;
-    avatar: string;
+    twitter: string;
+    yat: string;
   };
 };
 
