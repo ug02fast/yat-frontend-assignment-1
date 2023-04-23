@@ -1,15 +1,7 @@
 import Card from "./components/Card";
-import { Pod } from "../../mocks/handlers/pod";
-import { ReactNode } from "react";
+import { Pod, PodToken } from "../../mocks/handlers/pod";
 import { useQuery } from "react-query";
-
-// const GalleryContainer = ({ children }: { children: ReactNode }) => {
-//   const containerStyle = {
-//     padding: "28px 245px",
-//   };
-
-//   return <div style={containerStyle}>{children}</div>;
-// };
+import { useState } from "react";
 
 const CollectionDescription = ({ pod }: { pod: Pod }) => {
   return (
@@ -22,7 +14,7 @@ const CollectionDescription = ({ pod }: { pod: Pod }) => {
             className="w-16 h-16 rounded-full mr-4"
           />
           <div className="text-left">
-            <h2 className="text-2xl font-bold mb-2">{pod.name}</h2>
+            <h2 className="text-2xl font-bold mb-2 text-white">{pod.name}</h2>
             <p className="text-gray-700 text-base">{pod.description}</p>
           </div>
         </div>
@@ -49,25 +41,117 @@ const CollectionDescription = ({ pod }: { pod: Pod }) => {
   );
 };
 
-const PodGallery = ({ pod }: { pod: Pod }) => {
+const PodGallery = ({
+  pod,
+  sortDirection,
+  sortType,
+  itemsFilterValue,
+}: {
+  sortType: string;
+  sortDirection: string;
+  pod: Pod;
+  itemsFilterValue: string;
+}) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {pod.tokens.map((token, index) => (
-        <Card
-          key={index}
-          imageSrc={token.asset.url}
-          yat={token.owner.yat}
-          twitter={token.owner.twitter}
-        />
-        //   <div key={index} className="shadow-lg p-4 rounded-lg">
-        //     <img
-        //       src={token.asset.url}
-        //       alt={token.collection.name}
-        //       className="w-full h-auto object-cover gradient-border"
-        //     />
-        //     <h3 className="text-lg font-bold mt-2">{token.collection.name}</h3>
-        //   </div>
-      ))}
+      {pod.tokens
+        .sort((a, b) => {
+          if (sortType === "recency")
+            // sort date by recency
+            return new Date(b.transaction.date) - new Date(a.transaction.date);
+          if (sortType === "price")
+            return a.transaction.amount - b.transaction.amount;
+          return 0;
+        })
+        .filter((token) =>
+          token.collection.name
+            .toLowerCase()
+            .includes(itemsFilterValue.toLowerCase())
+        )
+        .map((token, index) => (
+          <Card
+            key={index}
+            imageSrc={token.asset.url}
+            yat={token.owner.yat}
+            twitter={token.owner.twitter}
+          />
+        ))}
+    </div>
+  );
+};
+
+const CollectionActivity = ({
+  setItemsFilterType,
+  setItemsFilterValue,
+  setSortDirection,
+  setSortType,
+  itemsFilterValue,
+}: {
+  setItemsFilterType: (type: string) => void;
+  setItemsFilterValue: (value: string) => void;
+  setSortDirection: (sortDirection: string) => void;
+  setSortType: (sortType: string) => void;
+  itemsFilterValue: string;
+}) => {
+  return (
+    <div className="pb-28">
+      <div className="flex justify-between">
+        <div>Collection Activity</div>
+        <div>
+          <input
+            className="text-black"
+            value={itemsFilterValue}
+            onChange={(e) => setItemsFilterValue(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="flex justify-between">
+        <div>
+          <div>
+            <button
+              className="rounded-full"
+              onClick={() => setSortDirection("asc")}
+            >
+              asc
+            </button>
+            <button
+              className="rounded-full"
+              onClick={() => setSortDirection("desc")}
+            >
+              desc
+            </button>
+          </div>
+          <div>
+            <button
+              className="rounded-full"
+              onClick={() => setSortType("recency")}
+            >
+              Recency
+            </button>
+            <button
+              className="rounded-full"
+              onClick={() => setSortType("price")}
+            >
+              Price
+            </button>
+          </div>
+        </div>
+        <div>
+          <button
+            className="rounded-full"
+            onClick={() => setItemsFilterType("all")}
+          >
+            All items
+          </button>
+          <button
+            className="rounded-full"
+            onClick={() => setItemsFilterType("my")}
+          >
+            My items
+          </button>
+          <button>More Filters</button>
+        </div>
+      </div>
     </div>
   );
 };
@@ -79,6 +163,17 @@ function Collection() {
     return res.json();
   };
   const collection = useQuery("collection", fetchCollection);
+
+  const [sortDirection, setSortDirection] = useState("asc");
+  const [sortType, setSortType] = useState("price");
+  const [itemsFilterType, setItemsFilterType] = useState("all");
+  const [itemsFilterValue, setItemsFilterValue] = useState("");
+  const [podTokens, setPodTokens] = useState([]);
+
+  const onItemsFilterValueChange = (e: any) => {
+    setItemsFilterValue(e.target.value);
+    collection.data.pod.name.includes(itemsFilterValue);
+  };
 
   // Collection data will be accessible
   // here, using the mock server.
@@ -93,7 +188,19 @@ function Collection() {
   return (
     <>
       <CollectionDescription pod={collection.data.pod} />
-      <PodGallery pod={collection.data.pod} />
+      <CollectionActivity
+        setSortDirection={setSortDirection}
+        setSortType={setSortType}
+        setItemsFilterType={setItemsFilterType}
+        setItemsFilterValue={setItemsFilterValue}
+        itemsFilterValue={itemsFilterValue}
+      />
+      <PodGallery
+        sortDirection={sortDirection}
+        sortType={sortType}
+        itemsFilterValue={itemsFilterValue}
+        pod={collection.data.pod}
+      />
     </>
   );
 }
