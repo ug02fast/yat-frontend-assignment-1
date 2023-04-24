@@ -24,7 +24,7 @@ const Card = ({
             </div>
           ) : (
             <div className="flex justify-center relative">
-              <span className="bg-gradient-to-r from-yat-darkblue to-yat-black text-white px-4 py-1 rounded-full border-2 border-indigo-500/50 min-w-max relative z-10">
+              <span className="bg-gradient-to-b from-yat-darkblue to-yat-black text-white px-4 py-1 rounded-full border-2 border-indigo-500/50 min-w-max relative z-10">
                 {yat}
               </span>
               <span className="bg-gradient-to-r from-yat-darkblue to-yat-blue px-4 py-1 flex items-center rounded-full border-2 border-indigo-500/25 font-semibold text-link absolute left-[64px]">

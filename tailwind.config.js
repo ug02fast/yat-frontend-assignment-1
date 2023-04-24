@@ -9,6 +9,7 @@ module.exports = {
         "yat-darkblue": "#232131",
         "yat-black": "#0D0B0E",
         link: "#1D9BF0",
+        "yat-discord": "#523DF1",
       },
     },
   },
