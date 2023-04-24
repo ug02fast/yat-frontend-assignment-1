@@ -11,6 +11,24 @@ module.exports = {
         link: "#1D9BF0",
         "yat-discord": "#523DF1",
       },
+      textShadow: {
+        glow: "0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.7)",
+      },
+      keyframes: {
+        glow: {
+          "0%, 100%": {
+            textShadow:
+              "0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.7)",
+          },
+          "50%": {
+            textShadow:
+              "0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7)",
+          },
+        },
+      },
+      animation: {
+        glow: "glow 1s ease-in-out infinite alternate",
+      },
     },
   },
   plugins: [],
