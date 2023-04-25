@@ -10,6 +10,7 @@ module.exports = {
         "yat-black": "#0D0B0E",
         link: "#1D9BF0",
         "yat-discord": "#523DF1",
+        "yat-green": "#31B2B2",
       },
       textShadow: {
         glow: "0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.7)",
@@ -22,7 +23,7 @@ module.exports = {
           },
           "50%": {
             textShadow:
-              "0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7)",
+              "0 0 15px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.7)",
           },
         },
       },
