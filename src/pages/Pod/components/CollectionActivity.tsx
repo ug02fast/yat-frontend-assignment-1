@@ -12,7 +12,7 @@ export const CollectionActivity = ({
   itemsFilterValue: string;
 }) => {
   return (
-    <div className="pb-28">
+    <div className="pb-16">
       <div className="flex justify-between">
         <div className="text-4xl font-bold mb-10">Collection Activity</div>
         <div>
@@ -45,7 +45,7 @@ export const CollectionActivity = ({
       <div className="flex justify-between">
         <div>
           <input
-            className="hidden rounded-full p-5"
+            className="hidden"
             type="radio"
             name="sortDirection"
             id="asc"
@@ -53,7 +53,7 @@ export const CollectionActivity = ({
             onChange={() => setSortDirection("asc")}
           />
           <label
-            className="rounded-full font-bold p-5 bg-slate-800"
+            className="rounded-full font-bold py-3 px-4 bg-slate-800"
             htmlFor="asc"
           >
             <button>
@@ -79,7 +79,10 @@ export const CollectionActivity = ({
             value="desc"
             onChange={() => setSortDirection("desc")}
           />
-          <label className="rounded-full p-5 mr-3 bg-slate-800" htmlFor="desc">
+          <label
+            className="rounded-full mr-3 ml-1 py-3 px-4 bg-slate-800"
+            htmlFor="desc"
+          >
             <button onClick={() => setSortDirection("desc")}>
               <svg
                 width="10"

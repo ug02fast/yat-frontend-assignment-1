@@ -15,12 +15,12 @@ const DescriptionBlock = ({
 
 export const CollectionDescription = ({ pod }: { pod: Pod }) => {
   return (
-    <div className="flex items-start lg:justify-between justify-center mb-32">
+    <div className="flex items-start lg:justify-between justify-center mb-16">
       <div className="flex items-center mb-8 lg:basis-1/2">
         <img
           src={pod.tokens[0].asset.url}
           alt={pod.name}
-          className="w-24 h-24 rounded-md mr-4 gradient-border"
+          className="w-28 h-28 rounded-md mr-4 gradient-border"
         />
         <div className="text-left">
           <h2 className="font-bold mb-2 text-white text-5xl">{pod.name}</h2>
