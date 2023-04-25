@@ -30,7 +30,7 @@ const Card = ({
       <div className="top-2 left-3 rounded-lg px-2 py-1 absolute bg-white bg-opacity-20 backdrop-blur-lg drop-shadow-lg text-[8px] font-bold">
         {daysAgo(token.transaction.date)}D AGO
       </div>
-      <div className="flex absolute top-64 left-3 bg-gradient-to-r from-yat-green via-[#43C57799]-600 to-yat-black rounded-lg px-2 py-1 text-[12px]">
+      <div className="flex absolute bottom-[132px] left-3 bg-gradient-to-r from-yat-green via-[#43C57799]-600 to-yat-black rounded-lg px-2 py-1 text-[12px]">
         Bought
         <svg
           width="8"

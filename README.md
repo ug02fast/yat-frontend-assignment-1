@@ -112,5 +112,3 @@ Use this page to build the interface. Don't worry about routes, but you're welco
 
 If you have questions, plese reach out to the recruiter or directly to me:
 - [Gabe Reis](mailto:rio@tari.com)
-
-# yat-frontend-assignment

@@ -15,7 +15,7 @@ const DescriptionBlock = ({
 
 export const CollectionDescription = ({ pod }: { pod: Pod }) => {
   return (
-    <div className="flex items-start lg:justify-between justify-center mb-16">
+    <div className="flex items-start lg:justify-between justify-center mb-16 flex-wrap">
       <div className="flex items-center mb-8 lg:basis-1/2">
         <img
           src={pod.tokens[0].asset.url}
