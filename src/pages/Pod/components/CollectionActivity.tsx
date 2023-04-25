@@ -15,33 +15,33 @@ export const CollectionActivity = ({
     <div className="pb-16">
       <div className="flex justify-between">
         <div className="text-4xl font-bold mb-10">Collection Activity</div>
-        <div>
-          <div className="w-full max-w-md mx-auto">
-            <div className="flex items-cent sm:flex-1er bg-white/5 rounded-full p-2 shadow-md">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 ml-2 text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                value={itemsFilterValue}
-                onChange={(e) => setItemsFilterValue(e.target.value)}
-                className="bg-transparent outline-none ml-2 pl-1 w-full rounded-full text-white"
-                type="text"
+        <div className="w-full max-w-md">
+          <div className="flex items-cent sm:flex-1er bg-white/5 rounded-full p-2 shadow-md">
+            {/* Magnifying glass icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 ml-2 text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
-            </div>
+            </svg>
+            <input
+              value={itemsFilterValue}
+              onChange={(e) => setItemsFilterValue(e.target.value)}
+              className="bg-transparent outline-none ml-2 pl-1 w-full rounded-full text-white"
+              type="text"
+            />
           </div>
         </div>
       </div>
+      {/* Action buttons */}
       <div className="flex justify-between">
         <div>
           <input
@@ -57,6 +57,7 @@ export const CollectionActivity = ({
             htmlFor="asc"
           >
             <button>
+              {/* Up arrow icon */}
               <svg
                 width="10"
                 height="12"
@@ -84,6 +85,7 @@ export const CollectionActivity = ({
             htmlFor="desc"
           >
             <button onClick={() => setSortDirection("desc")}>
+              {/* Down arrow icon */}
               <svg
                 width="10"
                 height="12"

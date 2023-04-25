@@ -46,15 +46,7 @@ export const PodGallery = ({
             .includes(itemsFilterValue.toLowerCase())
         )
         .map((token, index) => (
-          <Card
-            key={index}
-            imageSrc={token.asset.url}
-            yat={token.owner.yat}
-            twitter={token.owner.twitter}
-            assetId={token.asset.id}
-            name={token.collection.name}
-            token={token}
-          />
+          <Card key={index} token={token} />
         ))}
     </div>
   );

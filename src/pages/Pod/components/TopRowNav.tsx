@@ -3,6 +3,7 @@ export const TopRowNav = () => {
     <div>
       <div className="flex justify-center mb-24">
         <button className="w-12 h-12 mr-4 rounded-full bg-slate-800 flex items-center justify-center">
+          {/* Home icon */}
           <svg
             width="24"
             height="24"
@@ -18,6 +19,7 @@ export const TopRowNav = () => {
           </svg>
         </button>
         <button className="w-12 h-12 mr-4 rounded-full bg-slate-800 flex items-center justify-center">
+          {/* Person icon*/}
           <svg
             width="24"
             height="24"
@@ -38,6 +40,7 @@ export const TopRowNav = () => {
           </svg>
         </button>
         <button className="w-12 h-12 mr-4 rounded-full bg-slate-800 flex items-center justify-center">
+          {/* Smile face icon */}
           <svg
             width="24"
             height="24"
@@ -55,6 +58,7 @@ export const TopRowNav = () => {
           </svg>
         </button>
         <button className="w-12 h-12 mr-4 rounded-full bg-slate-800 flex items-center justify-center">
+          {/* Gem icon */}
           <svg
             width="24"
             height="24"

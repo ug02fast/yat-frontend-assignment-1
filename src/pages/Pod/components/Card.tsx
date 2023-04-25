@@ -9,29 +9,20 @@ function daysAgo(timestamp: string): number {
   return days;
 }
 
-const Card = ({
-  imageSrc,
-  yat,
-  twitter,
-  assetId,
-  name,
-  token,
-}: {
-  imageSrc: string;
-  yat: string;
-  twitter: string;
-  assetId: number;
-  name: string;
-  token: PodToken;
-}) => {
+const Card = ({ token }: { token: PodToken }) => {
   return (
     <div className="bg-[#090719] rounded-xl overflow-hidden shadow-md gradient-border relative">
-      <img src={imageSrc} alt={yat} className="w-full object-cover" />
+      <img
+        src={token.asset.url}
+        alt={token.owner.yat}
+        className="w-full object-cover"
+      />
       <div className="top-2 left-3 rounded-lg px-2 py-1 absolute bg-white bg-opacity-20 backdrop-blur-lg drop-shadow-lg text-[8px] font-bold">
         {daysAgo(token.transaction.date)}D AGO
       </div>
       <div className="flex absolute bottom-[132px] left-3 bg-gradient-to-r from-yat-green via-[#43C57799]-600 to-yat-black rounded-lg px-2 py-1 text-[12px]">
         Bought
+        {/* Ethereum Logo */}
         <svg
           width="8"
           height="14"
@@ -50,24 +41,27 @@ const Card = ({
         {token.transaction.amount}
       </div>
       <div className="bg-gradient-to-br from-yat-purple via-white-600 to-yat-darkblue p-4 text-left">
-        <div className="text-white font-bold">#{assetId}</div>
-        <div className="text-slate-600 text-sm">{name}</div>
+        <div className="text-white font-bold">#{token.asset.id}</div>
+        <div className="text-slate-600 text-sm">{token.collection.name}</div>
       </div>
       <div className="bg-gradient-to-r from-yat-purple via-white-600 to-yat-blue p-4">
         <div className="flex justify-center relative">
-          {!twitter ? (
+          {!token.owner.twitter ? (
             <div className="bg-gradient-to-r from-yat-darkblue to-yat-black text-white px-4 py-1 rounded-full border-2 border-indigo-500/50 min-w-max">
-              <span>{yat}</span>
+              <span>{token.owner.yat}</span>
             </div>
           ) : (
             <div className="flex justify-center relative">
               <span className="bg-gradient-to-b from-yat-darkblue to-yat-black text-white px-4 py-1 rounded-full border-2 border-indigo-500/50 min-w-max">
-                {yat}
+                {token.owner.yat}
               </span>
               <span className="bg-gradient-to-r from-yat-darkblue to-yat-blue px-4 py-1 flex items-center rounded-full border-2 border-indigo-500/25 font-semibold text-link">
                 @
-                <a className="link" href={`https://www.twitter.com/${twitter}`}>
-                  {twitter}
+                <a
+                  className="link"
+                  href={`https://www.twitter.com/${token.owner.twitter}`}
+                >
+                  {token.owner.twitter}
                 </a>
               </span>
             </div>
